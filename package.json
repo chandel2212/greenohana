@@ -12,6 +12,8 @@
   "license": "ISC",
   "dependencies": {
     "@slack/bolt": "^3.10.0",
+    "@slack/socket-mode": "^1.2.0",
+    "@slack/web-api": "^6.7.0",
     "mongodb": "^4.4.0"
   },
   "devDependencies": {

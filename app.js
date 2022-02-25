@@ -1,4 +1,9 @@
-const { App } = require("@slack/bolt");
+const { App } = require("@slack/bolt"); // ExpressReceiver
+
+const { WebClient, LogLevel } = require("@slack/web-api");
+const wellbeingController = require('./controllers/wellbeingController');
+
+
 require("dotenv").config();
 const {MongoClient} = require('mongodb');
 // Initializes your app with your bot token and signing secret
@@ -8,16 +13,32 @@ const app = new App({
   socketMode:true, // enable the following to use socket mode
   appToken: process.env.APP_TOKEN
 });
+//--------------------------------------
+// Sample wellBeing
+app.command("/knowledge1", wellbeingController.invoke);
 
-app.command("/knowledge", async ({ command, ack, say }) => {
-    try {
-      await ack();
-      say("hurray! that command works like fire!");
-    } catch (error) {
-        console.log("err")
-      console.error(error);
-    }
-});
+app.shortcut('shortcut1', wellbeingController.shortcutOne);
+
+//Carbon FootPrint Methods
+
+
+
+// Calendar Methods
+
+
+//----------------------------------------
+
+/* const webClient = new WebClient(process.env.SLACK_BOT_TOKEN, {
+    // LogLevel can be imported and used to make debugging simpler
+    logLevel: LogLevel.DEBUG
+  }); */
+
+/* const receiver = new ExpressReceiver({
+    signingSecret: process.env.SLACK_SIGNING_SECRET,
+  });
+  */
+//app.message(/^(tip|hello|hey).*/, wellbeingController.message); // doesn't work
+
 
 (async () => {
   const port = 3000
@@ -47,6 +68,13 @@ async function main() {
         );
 
         //await qryDatabases(client);
+
+    //Call the chat.postMessage method using the WebClient
+    /*const result = await webClient.chat.postMessage({
+        channel: 'hackathon-greenohana',
+        text: "Hello world P"
+    });
+    console.log(result); */
  
     } catch (e) {
         console.error(e);
