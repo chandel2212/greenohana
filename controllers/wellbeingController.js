@@ -1,3 +1,7 @@
+let tips = require('../resources/Tips.json');
+let facts = require('../resources/Facts.json');
+
+
 const invoke = async ({command, ack, say, options}) => {
     console.log('invoked');
     if (!options)
@@ -16,14 +20,11 @@ const getAllTips = async (ack, say) => {
 //GET one Tip
 const getOneTip = async (ack, say) =>  {
     try {
-        //await ack();
-        console.log('In wellbeing controller');
-        say("hurray! that command works like fire!");
-        say('Tip1');
-        // res.json({message: 'Tip1.'});  
+        await ack();
+        let randomIndex = Math.floor(Math.random() * tips.length)
+        say('Your ' + tips[randomIndex].type + ' tip of the day: ' + tips[randomIndex].message);
     } catch (error) {
-        console.log("err")
-        console.error(error);
+        console.log("err");
     }
 };
 
@@ -50,7 +51,7 @@ const shortcutOne = async ({ shortcut, ack, client, logger }) => {
         await ack();
         client.chat.postMessage({
             channel: 'hackathon-greenohana',
-            text: "Will open this shortcut tomorrow!"
+            text: 'Will open this shortcut tomorrow!'
         });
     }  catch (error) {
         console.log("err")
@@ -59,11 +60,41 @@ const shortcutOne = async ({ shortcut, ack, client, logger }) => {
 }
 
 
+const returnMessage = async (ack, say, type) =>  {
+    try {
+        await ack();
+        let objs = type == 'health' ? tips : facts;
+        let randomIndex = Math.floor(Math.random() * objs.length);
+        say((type == 'health' ? 'Health tip' : 'Fact') + ' of the day: ' + objs[randomIndex].message);
+    } catch (error) {
+        console.log("err");
+    }
+};
+
+const getHealthTip = async ({command, ack, say, options}) => {
+    returnMessage(ack, say, 'health');
+};
+
+const getFact = async ({command, ack, say, options}) => {
+    returnMessage(ack, say, 'fact');
+};
+
+const welcomeFact = async ({ event, client, logger }) => {
+    let randomIndex = Math.floor(Math.random() * facts.length);
+    client.chat.postMessage({
+        channel: 'hackathon-greenohana',
+        text: 'Hello <@' + event.user +'>, Here is a :circle-green: fact for you: ' + facts[randomIndex].message
+    });
+};
+
 //export controller functions
 module.exports = {
     // getAllTips,
     // getOneTip,
     invoke,
     //message,
-    shortcutOne
+    shortcutOne,
+    getHealthTip,
+    getFact,
+    welcomeFact
 };
