@@ -16,8 +16,12 @@ const app = new App({
 //--------------------------------------
 // Sample wellBeing
 app.command("/knowledge1", wellbeingController.invoke);
-
 app.shortcut('shortcut1', wellbeingController.shortcutOne);
+
+app.command("/health_tip", wellbeingController.getHealthTip);
+app.command("/fact", wellbeingController.getFact);
+
+app.event('reaction_added', wellbeingController.welcomeFact);
 
 //Carbon FootPrint Methods
 
