@@ -78,7 +78,6 @@ const buttonElectricity = async ({ack, body, client, context}) => {
 }
 const submitSurvey = async ({ack, body, view, client}) => {
     await ack();
-    console.log('Do we submit survey');
     // //get records for food survey
     nonVegCalorie = view.state.values.block_6.actionId_6.value;
     bakedCalorie = view.state.values.block_7.actionId_7.value;
@@ -114,7 +113,6 @@ const submitSurvey = async ({ack, body, view, client}) => {
 
         //calculate carbon foot print value
         computeCarbonFootPrint(user, travelData,waterBill,electricityBill,distanceTravelled,worklocation,nonVegCalorie, bakedCalorie, dairyProductCalorie, fruitsCalorie);
-        console.log('Got output'+totalCO2);
         await client.views.update({
           view_id: viewId,
           view: {
@@ -188,7 +186,7 @@ async function computeCarbonFootPrint(user, travelData,waterBill,electricityBill
             homeCO2: totalhomeCO2
 
         };
-        console.log('Database result '+results);
+
         carbonFootprint.create(results, function (err, post) 
         {
             if (err) return ;
