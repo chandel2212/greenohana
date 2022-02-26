@@ -1,5 +1,5 @@
 const { App } = require("@slack/bolt"); // ExpressReceiver
-
+const cron = require('node-cron');
 const { WebClient, LogLevel } = require("@slack/web-api");
 const wellbeingController = require('./controllers/wellbeingController');
 
@@ -13,6 +13,11 @@ const app = new App({
   socketMode:true, // enable the following to use socket mode
   appToken: process.env.APP_TOKEN
 });
+
+const webClient = new WebClient(process.env.SLACK_BOT_TOKEN, {
+    // LogLevel can be imported and used to make debugging simpler
+    logLevel: LogLevel.DEBUG
+  });
 //--------------------------------------
 // Sample wellBeing
 app.command("/knowledge1", wellbeingController.invoke);
@@ -22,6 +27,10 @@ app.command("/health_tip", wellbeingController.getHealthTip);
 app.command("/fact", wellbeingController.getFact);
 
 app.event('reaction_added', wellbeingController.welcomeFact);
+
+cron.schedule('* * * * *', function() {
+    wellbeingController.welcomeFact({client:webClient});
+});
 
 //Carbon FootPrint Methods
 
