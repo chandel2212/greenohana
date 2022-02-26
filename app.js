@@ -42,7 +42,7 @@ app.event('app_mention', async ({ event, context, client, say }) => {
     }
   });
 
-  app.action('fact', wellbeingController.welcomeFact); //say is not available, chat.postmessage posts in channel
+app.action('fact', wellbeingController.welcomeFact); //say is not available, chat.postmessage posts in channel
 //   app.action('health_tip', wellbeingController.welcomeFact);
 
 //--------------------------------------
