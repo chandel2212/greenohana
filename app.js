@@ -32,8 +32,20 @@ app.command("/fact", wellbeingController.getFact);
 
 app.event('reaction_added', wellbeingController.welcomeFact);
 
-cron.schedule('* * * * *', function() {
-    wellbeingController.welcomeFact({client:webClient});
+
+/* Ref: https://www.npmjs.com/package/node-cron
+ # ┌────────────── second (optional)
+ # │ ┌──────────── minute
+ # │ │ ┌────────── hour
+ # │ │ │ ┌──────── day of month
+ # │ │ │ │ ┌────── month
+ # │ │ │ │ │ ┌──── day of week
+ # │ │ │ │ │ │
+ # │ │ │ │ │ │
+ # * * * * * *
+  */
+cron.schedule('*/30 * * * *', function() {
+    wellbeingController.welcomeFact({client:webClient}); 
 });
 
 //Carbon FootPrint Methods
