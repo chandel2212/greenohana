@@ -32,21 +32,6 @@ const getOneTip = async (ack, say) =>  {
     }
 };
 
-/* 
-const message = async ({message, say }) =>  {
-    try {
-        await ack();
-        console.log('In wellbeing controller:'+message);
-
-        await say("hurray! that command works like fire!");
-        await say('Tip1');
-        // res.json({message: 'Tip1.'});  
-    } catch (error) {
-        console.log("err")
-      console.error(error);
-    }
-};
-*/
 
 const shortcutOne = async ({ shortcut, ack, client, logger }) => {
     console.log('In shorcut one fnction!');
@@ -114,28 +99,20 @@ const getAllCarbonFootprint = async ({ack, say}) =>
 {
     names = '';
     try 
-    {
-        //await ack();
-        // console.log('In wellbeing controller');
-        // say("hurray! that command works like fire!");
-        // say('Tip1');
-        // res.json({message: 'Tip1.'});  
+    { 
         WellBeing.find(function (err, cfps) {
             if (err) {
                 // return next(err);
                 console.log(err);
                 logger.info(err);
             }
-            //res.json(products);
 
             logger.info(cfps);
             console.log(cfps);
             
             for(cfp in cfps)
             {
-                // console.log(cfp);
                 names += cfps[cfp].name+', ';
-                // console.log(names);
             }
             say(names);
             ack();
