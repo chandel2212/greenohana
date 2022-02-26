@@ -59,8 +59,6 @@ const dataFromView = async ({  ack, body, view, client, logger }) =>
         description : 'description'
     };
 
-    logger.info(results);
-
     // await ack();
     // say(results);
 
@@ -71,24 +69,23 @@ const dataFromView = async ({  ack, body, view, client, logger }) =>
 }
 
 //GET one Tip
-const getOneCarbonFootprint = async ({ack, say}) =>  {
+const getOneCarbonFootprint = async ({ack, say}) =>  
+{
     try 
     {
         WellBeing.findById('6219b1c5eaab270eb179adb3', function (err, cfp) {
             if (err) {
                 // return next(err);
-                logger.info(err);
                 console.log(err);
             }
             //res.json(products);
-            logger.info(cfp);
             console.log(cfp);
             say(cfp.name);
             ack();
         });
     } 
-    catch (error) {
-        console.log("err")
+    catch (error) 
+    {
         console.error(error);
     }
 };
@@ -104,10 +101,7 @@ const getAllCarbonFootprint = async ({ack, say}) =>
             if (err) {
                 // return next(err);
                 console.log(err);
-                logger.info(err);
             }
-
-            logger.info(cfps);
             console.log(cfps);
             
             for(cfp in cfps)
@@ -118,8 +112,8 @@ const getAllCarbonFootprint = async ({ack, say}) =>
             ack();
         });
     } 
-    catch (error) {
-        console.log("err")
+    catch (error) 
+    {
         console.error(error);
     }
 };
