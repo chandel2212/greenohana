@@ -80,10 +80,12 @@ const getFact = async ({command, ack, say, options}) => {
 };
 
 const welcomeFact = async ({ event, client, logger }) => {
+    console.log('welcomeFact!');
     let randomIndex = Math.floor(Math.random() * facts.length);
+    let user = event ? '<@' + event.user +'>' : 'There';
     client.chat.postMessage({
         channel: 'hackathon-greenohana',
-        text: 'Hello <@' + event.user +'>, Here is a :circle-green: fact for you: ' + facts[randomIndex].message
+        text: 'Hello ' + user +', Here is a :circle-green: fact for you: ' + facts[randomIndex].message
     });
 };
 
