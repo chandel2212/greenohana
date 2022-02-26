@@ -16,8 +16,9 @@
     "@slack/web-api": "^6.7.0",
     "bluebird": "^3.7.2",
     "debug": "^4.3.3",
+    "mongoose": "^6.2.3",
     "mongodb": "^4.4.0",
-    "mongoose": "^6.2.3"
+    "node-cron": "^3.0.0"
   },
   "devDependencies": {
     "dotenv": "^16.0.0",
