@@ -1,11 +1,15 @@
 let tips = require('../resources/Tips.json');
 let facts = require('../resources/Facts.json');
+var mongoose = require('mongoose');
+
+var WellBeing = require('../models/WellbeingModel.js');
+
 
 
 const invoke = async ({command, ack, say, options}) => {
-    console.log('invoked');
     if (!options)
         getOneTip(ack, say);
+        // getAllWellbeings(ack, say);
 };
 
 
@@ -28,21 +32,6 @@ const getOneTip = async (ack, say) =>  {
     }
 };
 
-/* 
-const message = async ({message, say }) =>  {
-    try {
-        await ack();
-        console.log('In wellbeing controller:'+message);
-
-        await say("hurray! that command works like fire!");
-        await say('Tip1');
-        // res.json({message: 'Tip1.'});  
-    } catch (error) {
-        console.log("err")
-      console.error(error);
-    }
-};
-*/
 
 const shortcutOne = async ({ shortcut, ack, client, logger }) => {
     console.log('In shorcut one fnction!');
@@ -58,6 +47,76 @@ const shortcutOne = async ({ shortcut, ack, client, logger }) => {
         console.error(error);
     }
 }
+
+const dataFromView = async ({  ack, body, view, client, logger }) => 
+{
+    console.log('In dataFromView fnction!');
+
+    const results = 
+    {
+        name: body.user.username,
+        indicator: view.state.values.block_0.actionId_0.selected_option.text.text,
+        description : 'description'
+    };
+
+    // await ack();
+    // say(results);
+
+    WellBeing.create(results, function (err, post) 
+    {
+        if (err) return next(err);
+    });
+}
+
+//GET one Tip
+const getOneCarbonFootprint = async ({ack, say}) =>  
+{
+    try 
+    {
+        WellBeing.findById('6219b1c5eaab270eb179adb3', function (err, cfp) {
+            if (err) {
+                // return next(err);
+                console.log(err);
+            }
+            //res.json(products);
+            console.log(cfp);
+            say(cfp.name);
+            ack();
+        });
+    } 
+    catch (error) 
+    {
+        console.error(error);
+    }
+};
+
+
+//GET AllCarbonFootprint
+const getAllCarbonFootprint = async ({ack, say}) =>  
+{
+    names = '';
+    try 
+    { 
+        WellBeing.find(function (err, cfps) {
+            if (err) {
+                // return next(err);
+                console.log(err);
+            }
+            console.log(cfps);
+            
+            for(cfp in cfps)
+            {
+                names += cfps[cfp].name+', ';
+            }
+            say(names);
+            ack();
+        });
+    } 
+    catch (error) 
+    {
+        console.error(error);
+    }
+};
 
 
 const returnMessage = async (ack, say, type) =>  {
@@ -94,6 +153,9 @@ module.exports = {
     // getAllTips,
     // getOneTip,
     invoke,
+    dataFromView,
+    getOneCarbonFootprint,
+    getAllCarbonFootprint,
     //message,
     shortcutOne,
     getHealthTip,
