@@ -87,7 +87,7 @@ app.view('view_1', wellbeingController.dataFromView);
 })();
 
 
-mongoose.connect('mongodb+srv://GreenOhanaApp:ojf2KcuLu4y6lMKt@cluster0.03fld.mongodb.net/myFirstDatabase?retryWrites=true&w=majority', 
+mongoose.connect(process.env.MONGO_LOGIN_URL, 
 { promiseLibrary: require('bluebird') })
   .then(() =>  console.log('connection succesful'))
   .catch((err) => console.error(err));
