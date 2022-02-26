@@ -39,7 +39,7 @@ const shortcutOne = async ({ shortcut, ack, client, logger }) => {
         // Acknowledge shortcut request
         await ack();
         client.chat.postMessage({
-            channel: 'hackathon-greenohana',
+            channel: process.env.APP_MESSAGE_CHANNEL,//hackathon-greenohana
             text: 'Will open this shortcut tomorrow!'
         });
     }  catch (error) {
@@ -143,7 +143,7 @@ const welcomeFact = async ({ event, client, body, logger }) => {
     let randomIndex = Math.floor(Math.random() * facts.length);
     let user = event ? '<@' + event.user +'>' : (body ? '<@' + body.user.username +'>' : 'There');
     client.chat.postMessage({
-        channel: 'hackathon-greenohana',
+        channel: process.env.APP_MESSAGE_CHANNEL,
         text: 'Hello ' + user +', Here is a :circle-green: fact for you: ' + facts[randomIndex].message
     });
 };
