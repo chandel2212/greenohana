@@ -6,6 +6,7 @@ const mongoose = require('mongoose');
 mongoose.Promise = require('bluebird');
 
 const wellbeingController = require('./controllers/wellbeingController');
+const footprintController = require('./controllers/FootprintController');
 
 require("dotenv").config();
 
@@ -50,7 +51,7 @@ cron.schedule('*/30 * * * *', function() {
 
 //Carbon FootPrint Methods
 app.command("/knowledge", wellbeingController.invoke);
-
+app.command("/surveyfp", footprintController.invoke);
 app.command("/getonecfp", wellbeingController.getOneCarbonFootprint);
 app.command("/getallcfp", wellbeingController.getAllCarbonFootprint);
 
@@ -61,7 +62,16 @@ app.view({ callback_id: 'view_1', type: 'view_submission' }, async ({ ack, body,
 
 app.view('view_1', wellbeingController.dataFromView);
 
+app.action('button_def', footprintController.homeView);
 
+app.action('button_electricity', footprintController.buttonElectricity);
+
+app.view({ callback_id: 'view_3', type: 'view_submission' }, async ({ack, body, view, client }) => 
+{
+    await ack();
+});
+
+app.view('view_3', footprintController.submitSurvey);
 
 
 
