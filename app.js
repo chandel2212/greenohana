@@ -7,6 +7,7 @@ mongoose.Promise = require('bluebird');
 
 const wellbeingController = require('./controllers/wellbeingController');
 const footprintController = require('./controllers/FootprintController');
+const reminderController = require('./controllers/RemindersController');
 const view_home = require('./views/home.json');
 const view_app_mention = require('./views/app_mention.json');
 
@@ -42,6 +43,12 @@ app.event('app_mention', async ({ event, context, client, say }) => {
       console.error(error);
     }
   });
+
+//reminders
+app.command("/reminder", reminderController.invokeReminderCommandInitialView);
+app.action({ action_id: 'static_select-action', block_id: 'reminder-block' }, reminderController.setReminders);
+app.action({ action_id: 'reminder-button', block_id: 'reminder-set-button' }, reminderController.addReminder);
+app.action({ action_id: 'health-reminder-options-selected', block_id: 'health-reminder-options-block' }, reminderController.addHealthReminder);
 
 app.action('fact', wellbeingController.welcomeFact); //say is not available, chat.postmessage posts in channel
 //   app.action('health_tip', wellbeingController.welcomeFact);
