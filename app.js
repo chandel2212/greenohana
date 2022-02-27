@@ -50,16 +50,15 @@ app.action({ action_id: 'static_select-action', block_id: 'reminder-block' }, re
 app.action({ action_id: 'reminder-button', block_id: 'reminder-set-button' }, reminderController.addReminder);
 app.action({ action_id: 'health-reminder-options-selected', block_id: 'health-reminder-options-block' }, reminderController.addHealthReminder);
 
-app.action('fact', wellbeingController.welcomeFact); //say is not available, chat.postmessage posts in channel
-//   app.action('health_tip', wellbeingController.welcomeFact);
-
 //--------------------------------------
 // Sample wellBeing
 app.command("/knowledge1", wellbeingController.invoke);
 app.shortcut('shortcut1', wellbeingController.shortcutOne);
 
 app.command("/health_tip", wellbeingController.getHealthTip);
+app.action('health_tip', wellbeingController.getHealthTip);
 app.command("/fact", wellbeingController.getFact);
+app.action('fact', wellbeingController.welcomeFact);
 
 app.event('reaction_added', wellbeingController.welcomeFact);
 

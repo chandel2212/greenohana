@@ -118,27 +118,54 @@ const getAllCarbonFootprint = async ({ack, say}) =>
     }
 };
 
+const getMessage = (type) => {
+    let objs = type == 'health' ? tips : facts;
+    let randomIndex = Math.floor(Math.random() * objs.length);
+    return (type == 'health' ? 'Health tip' : 'Fact') + ' of the day: ' + objs[randomIndex].message;
+};
 
 const returnMessage = async (ack, say, type) =>  {
     try {
         await ack();
-        let objs = type == 'health' ? tips : facts;
-        let randomIndex = Math.floor(Math.random() * objs.length);
-        say((type == 'health' ? 'Health tip' : 'Fact') + ' of the day: ' + objs[randomIndex].message);
+        say(getMessage(type));
     } catch (error) {
         console.log("err");
     }
 };
 
-const getHealthTip = async ({command, ack, say, options}) => {
-    returnMessage(ack, say, 'health');
+const getHealthTip = async ({command, ack, say, event, client, body, options}) => {
+    await ack();
+    console.log('getHealthTip!');
+    if (say) {
+        returnMessage(ack, say, 'health');
+    } else {
+        let user, channel;
+        if (event)
+        {
+            user = '<@' + event.user +'>';
+            channel = event.user;
+        } else if (body && body.user) {
+            user = '<@' + body.user.username +'>';
+            channel = body.user.id;
+        } else {
+            user = 'There';
+            channel = process.env.CHANNEL || 'hackathon-greenohana';
+        }
+        client.chat.postMessage({
+            channel: channel,
+            text: 'Hello ' + user +', ' + getMessage('health')
+        });
+    }
+    
 };
 
 const getFact = async ({command, ack, say, options}) => {
     returnMessage(ack, say, 'fact');
 };
 
-const welcomeFact = async ({ event, client, body, logger }) => {
+const welcomeFact = async ({ ack, event, client, body, logger }) => {
+    if (ack)
+        await ack();
     console.log('welcomeFact!');
     let randomIndex = Math.floor(Math.random() * facts.length);
     let user, channel;
