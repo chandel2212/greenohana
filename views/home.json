@@ -24,7 +24,41 @@
 						"emoji": true
 					},
 					"style": "primary",
-					"value": "getonecfp"
+					"value": "carbon_footprint",
+					"action_id": "surveyfp_id"
+				},
+				{
+					"type": "button",
+					"text": {
+						"type": "plain_text",
+						"text": "Nearby Events",
+						"emoji": true
+					},
+					"style": "primary",
+					"value": "events",
+					"action_id": "event"
+				},
+				{
+					"type": "button",
+					"text": {
+						"type": "plain_text",
+						"text": "Search Resources",
+						"emoji": true
+					},
+					"style": "primary",
+					"value": "resources",
+					"action_id": "resources"
+				},
+				{
+					"type": "button",
+					"text": {
+						"type": "plain_text",
+						"text": "Ohana Community",
+						"emoji": true
+					},
+					"style": "primary",
+					"value": "community",
+					"action_id": "community"
 				},
 				{
 					"type": "button",
@@ -40,7 +74,7 @@
 					"type": "button",
 					"text": {
 						"type": "plain_text",
-						"text": "Get a Health Tip",
+						"text": "Sustainability Tips",
 						"emoji": true
 					},
 					"value": "health_tip",
@@ -83,6 +117,135 @@
 			"alt_text": "Calculate Carbon Footprint"
 		},
 		{
+			"type": "actions",
+			"elements": [
+				{
+					"type": "button",
+					"text": {
+						"type": "plain_text",
+						"text": "Your Carbon Footprint",
+						"emoji": true
+					},
+					"style": "primary",
+					"value": "getonecfp"
+				}
+			]
+		},
+		{
+			"type": "divider"
+		},
+		{
+			"type": "header",
+			"text": {
+				"type": "plain_text",
+				"text": "Nearby Events"
+			}
+		},
+		{
+			"type": "section",
+			"text": {
+				"type": "mrkdwn",
+				"text": "Explore *Sustainability* and *Wellbeing events* scheduled in *your city*. We encourage you to participate in these events and contribute to the *Planet Sustainability*."
+			}
+		},
+		{
+			"type": "image",
+			"image_url": "https://a.slack-edge.com/5d2a1/img/api/articles/app_home/demo_apphome.gif",
+			"alt_text": "Events"
+		},
+		{
+			"type": "actions",
+			"elements": [
+				{
+					"type": "button",
+					"text": {
+						"type": "plain_text",
+						"text": "Explore Nearby Events",
+						"emoji": true
+					},
+					"style": "primary",
+					"value": "events",
+					"action_id": "event"
+				}
+			]
+		},
+		{
+			"type": "divider"
+		},
+		{
+			"type": "header",
+			"text": {
+				"type": "plain_text",
+				"text": "Search Resources"
+			}
+		},
+		{
+			"type": "section",
+			"text": {
+				"type": "mrkdwn",
+				"text": "One stop search solution for *Sustainability* and *Wellbeing Articles*, *Events*, *Facts* and *Tips* from our ever growing collection."
+			}
+		},
+		{
+			"type": "image",
+			"image_url": "https://a.slack-edge.com/5d2a1/img/api/articles/app_home/demo_apphome.gif",
+			"alt_text": "Events"
+		},
+		{
+			"type": "actions",
+			"elements": [
+				{
+					"type": "button",
+					"text": {
+						"type": "plain_text",
+						"text": "Search Resources",
+						"emoji": true
+					},
+					"style": "primary",
+					"value": "resources",
+					"action_id": "resources"
+				}
+			]
+		},
+		{
+			"type": "divider"
+		},
+		{
+			"type": "header",
+			"text": {
+				"type": "plain_text",
+				"text": "Ohana Community"
+			}
+		},
+		{
+			"type": "section",
+			"text": {
+				"type": "mrkdwn",
+				"text": "Jump over to our own *Green Ohana Community* to *Engage* and *Contribute* towards Wellbeing and Sustainibility of people on the *Planet Earth*."
+			}
+		},
+		{
+			"type": "image",
+			"image_url": "https://a.slack-edge.com/5d2a1/img/api/articles/app_home/demo_apphome.gif",
+			"alt_text": "Events"
+		},
+		{
+			"type": "actions",
+			"elements": [
+				{
+					"type": "button",
+					"text": {
+						"type": "plain_text",
+						"text": "Explore Ohana Community",
+						"emoji": true
+					},
+					"style": "primary",
+					"value": "community",
+					"action_id": "community"
+				}
+			]
+		},
+		{
 			"type": "divider"
 		},
 		{
@@ -101,7 +264,7 @@
 		},
 		{
 			"type": "image",
-			"image_url": "https://i.ibb.co/y63dLJs/facts.gif",
+			"image_url": "https://i.ibb.co/mqB4tH4/reminders.gif",
 			"alt_text": "Setup Reminder"
 		},
 		{
@@ -133,7 +296,7 @@
 			"type": "section",
 			"text": {
 				"type": "mrkdwn",
-				"text": "Get your daily dose of *Health* and *Sustainability Tips* delivered to your inbox."
+				"text": "Get your daily dose of *Health* and *Sustainability Tips* delivered to your *Inbox* and our *Green Ohana Community*."
 			}
 		},
 		{
@@ -171,7 +334,7 @@
 			"type": "section",
 			"text": {
 				"type": "mrkdwn",
-				"text": "Receive daily dose of *Interesting Facts* right here, to motivate you and stretch towards the *Sustainability* goals."
+				"text": "Receive daily dose of *Interesting Facts* right here, to motivate you and stretch towards the *Sustainability Goals*."
 			}
 		},
 		{
