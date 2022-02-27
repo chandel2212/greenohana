@@ -45,9 +45,7 @@ const getHealthReminderOptions = async ( ack, body, client, logger, say ) => {
 const setReminders = async ({ack, body, client, logger, say }) => {
     try{
         await ack();
-
         const remType = body.actions[0].selected_option.value;
-        console.log(remType);
         if(remType == 'add-reminder'){
             getReminderOptions(ack, body, client, logger, say);
         }else if(remType == 'health-reminders'){
@@ -69,11 +67,8 @@ const addHealthReminder = async ({ack, body, client, logger, say }) => {
     const webClient = new WebClient(process.env.SLACK_BOT_TOKEN);
     try {
         await ack();
-        console.log(JSON.stringify(body));
         const message = body.state.values['health-reminder-radio-options']['radio_buttons-action']['selected_option'].value;
-        console.log(JSON.stringify(message));
         const time = body.state.values['health-reminder-time-dropDown']['reminder-health-time']['selected_option'].value;
-        console.log(JSON.stringify(time));
         await webClient.reminders.add({
                                 token:userToken,
                                 text:message,
@@ -98,13 +93,9 @@ const addReminder = async ({ack, body, client, logger, say }) => {
     const webClient = new WebClient(process.env.SLACK_BOT_TOKEN);
     try {
         await ack();
-        console.log(JSON.stringify(body));
         const time = body.state.values['reminder-time']['timepicker-action']['selected_time'];
-        console.log(JSON.stringify(time));
         const freq = body.state.values['reminder-freq']['static_select-action']['selected_option'].value;
-        console.log(JSON.stringify(freq));
         const message = body.state.values['reminder-message']['plain_text_input-action'].value;
-        console.log(JSON.stringify(message));
         if(freq == 'once'){
             await webClient.reminders.add({
                         token:userToken,
