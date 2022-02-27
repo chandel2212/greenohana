@@ -6,6 +6,8 @@ const mongoose = require('mongoose');
 mongoose.Promise = require('bluebird');
 
 const wellbeingController = require('./controllers/wellbeingController');
+const footprintController = require('./controllers/FootprintController');
+const reminderController = require('./controllers/RemindersController');
 const view_home = require('./views/home.json');
 const view_app_mention = require('./views/app_mention.json');
 
@@ -42,6 +44,12 @@ app.event('app_mention', async ({ event, context, client, say }) => {
     }
   });
 
+//reminders
+app.command("/reminder", reminderController.invokeReminderCommandInitialView);
+app.action({ action_id: 'static_select-action', block_id: 'reminder-block' }, reminderController.setReminders);
+app.action({ action_id: 'reminder-button', block_id: 'reminder-set-button' }, reminderController.addReminder);
+app.action({ action_id: 'health-reminder-options-selected', block_id: 'health-reminder-options-block' }, reminderController.addHealthReminder);
+
 //--------------------------------------
 // Sample wellBeing
 app.command("/knowledge1", wellbeingController.invoke);
@@ -72,7 +80,7 @@ cron.schedule('*/30 * * * *', function() {
 
 //Carbon FootPrint Methods
 app.command("/knowledge", wellbeingController.invoke);
-
+app.command("/surveyfp", footprintController.invoke);
 app.command("/getonecfp", wellbeingController.getOneCarbonFootprint);
 app.command("/getallcfp", wellbeingController.getAllCarbonFootprint);
 
@@ -83,7 +91,16 @@ app.view({ callback_id: 'view_1', type: 'view_submission' }, async ({ ack, body,
 
 app.view('view_1', wellbeingController.dataFromView);
 
+app.action('button_def', footprintController.homeView);
 
+app.action('button_electricity', footprintController.buttonElectricity);
+
+app.view({ callback_id: 'view_3', type: 'view_submission' }, async ({ack, body, view, client }) => 
+{
+    await ack();
+});
+
+app.view('view_3', footprintController.submitSurvey);
 
 
 
