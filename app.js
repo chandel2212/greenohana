@@ -42,16 +42,15 @@ app.event('app_mention', async ({ event, context, client, say }) => {
     }
   });
 
-app.action('fact', wellbeingController.welcomeFact); //say is not available, chat.postmessage posts in channel
-//   app.action('health_tip', wellbeingController.welcomeFact);
-
 //--------------------------------------
 // Sample wellBeing
 app.command("/knowledge1", wellbeingController.invoke);
 app.shortcut('shortcut1', wellbeingController.shortcutOne);
 
 app.command("/health_tip", wellbeingController.getHealthTip);
+app.action('health_tip', wellbeingController.getHealthTip);
 app.command("/fact", wellbeingController.getFact);
+app.action('fact', wellbeingController.welcomeFact);
 
 app.event('reaction_added', wellbeingController.welcomeFact);
 
