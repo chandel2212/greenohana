@@ -164,7 +164,8 @@ const getFact = async ({command, ack, say, options}) => {
 };
 
 const welcomeFact = async ({ ack, event, client, body, logger }) => {
-    await ack();
+    if (ack)
+        await ack();
     console.log('welcomeFact!');
     let randomIndex = Math.floor(Math.random() * facts.length);
     let user, channel;
