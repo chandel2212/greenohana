@@ -113,7 +113,7 @@
 		},
 		{
 			"type": "image",
-			"image_url": "https://a.slack-edge.com/5d2a1/img/api/articles/app_home/demo_apphome.gif",
+			"image_url": "https://i.ibb.co/LR7R9MY/cfp.gif",
 			"alt_text": "Calculate Carbon Footprint"
 		},
 		{
@@ -150,7 +150,7 @@
 		},
 		{
 			"type": "image",
-			"image_url": "https://a.slack-edge.com/5d2a1/img/api/articles/app_home/demo_apphome.gif",
+			"image_url": "https://i.ibb.co/PT4FvNL/events.gif",
 			"alt_text": "Events"
 		},
 		{
@@ -188,8 +188,8 @@
 		},
 		{
 			"type": "image",
-			"image_url": "https://a.slack-edge.com/5d2a1/img/api/articles/app_home/demo_apphome.gif",
-			"alt_text": "Events"
+			"image_url": "https://i.ibb.co/Bcg2yS0/search.gif",
+			"alt_text": "Search Resources"
 		},
 		{
 			"type": "actions",
@@ -226,8 +226,8 @@
 		},
 		{
 			"type": "image",
-			"image_url": "https://a.slack-edge.com/5d2a1/img/api/articles/app_home/demo_apphome.gif",
-			"alt_text": "Events"
+			"image_url": "https://i.ibb.co/61YXmFC/community.gif",
+			"alt_text": "Ohana Community"
 		},
 		{
 			"type": "actions",
