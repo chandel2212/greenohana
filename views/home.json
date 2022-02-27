@@ -23,18 +23,8 @@
 						"text": "Your Carbon Footprint",
 						"emoji": true
 					},
-					"style": "primary",
-					"value": "getonecfp"
-				},
-				{
-					"type": "button",
-					"text": {
-						"type": "plain_text",
-						"text": "Schedule a Reminder",
-						"emoji": true
-					},
-					"style": "primary",
-					"value": "getonecfp"
+					"value": "carbon_footprint",
+					"action_id": "surveyfp_id"
 				},
 				{
 					"type": "button",

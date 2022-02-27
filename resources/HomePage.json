@@ -1,7 +1,7 @@
 {
     "title": {
       "type": "plain_text",
-      "text": "FootprintSurvey :foot:",
+      "text": "Footprint Survey :foot:",
       "emoji": true
     },
     "type": "modal",
@@ -10,8 +10,9 @@
       {
         "type": "section",
         "text": {
-          "type": "mrkdwn",
-          "text": "How much do you use in your home :house_with_garden: ?"
+          "type": "plain_text",
+          "text": "How much do you use in your home :house_with_garden: ?",
+          "emoji": true
         }
       },
       {

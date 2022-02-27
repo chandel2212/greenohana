@@ -1,6 +1,7 @@
 let travelPage = require('../resources/TravelPage.json');
 let homePage = require('../resources/HomePage.json');
 let foodPage = require('../resources/FoodPage.json');
+let screenPage = require('../resources/FinalScreen.json');
 
 var mongoose = require('mongoose');
 var carbonFootprint = require('../models/CarbonFootprintModel.js');
@@ -116,27 +117,28 @@ const submitSurvey = async ({ack, body, view, client}) => {
         console.log('update final result');
         await client.views.update({
           view_id: viewId,
-          view: {
-                    "type": "modal",
-                    "title": {
-                    "type": "plain_text",
-                    "text": "Your Carbon Footprint"
-                    },
-                    "blocks": [
-                            {
-                            "type": "section",
-                            "text": {
-                                "type": "plain_text",
-                                "text":  totalCO2.toFixed(3) + " tons CO2/Month "
-                            },
-                            "accessory": {
-                                "type": "image",
-                                "image_url": "https://www.conserve-energy-future.com/wp-content/uploads/2013/01/CO2-carbon-footprint-banner.jpg",
-                                "alt_text": "carbon_foot print"
-                            }
-                        }
-                    ]    
-                }
+          view: screenPage
+          // view: {
+          //           "type": "modal",
+          //           "title": {
+          //           "type": "plain_text",
+          //           "text": "Your Carbon Footprint"
+          //           },
+          //           "blocks": [
+          //                   {
+          //                   "type": "section",
+          //                   "text": {
+          //                       "type": "plain_text",
+          //                       "text":  totalCO2.toFixed(3) + " tons CO2/Month "
+          //                   },
+          //                   "accessory": {
+          //                       "type": "image",
+          //                       "image_url": "https://www.conserve-energy-future.com/wp-content/uploads/2013/01/CO2-carbon-footprint-banner.jpg",
+          //                       "alt_text": "carbon_foot print"
+          //                   }
+          //               }
+          //           ]    
+          //       }
         })  
     }
     catch(error)
@@ -144,6 +146,8 @@ const submitSurvey = async ({ack, body, view, client}) => {
         console.log('Error on Result & Load data '+error);
     }
 }
+
+
 async function computeCarbonFootPrint(user, travelData,waterBill,electricityBill,distanceTravelled,worklocation,nonVegCalorie, bakedCalorie, dairyProductCalorie, fruitsCalorie)
 {
     console.log('In computeCarbonFootPrint fnction!');

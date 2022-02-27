@@ -1,7 +1,7 @@
 {
     "title": {
         "type": "plain_text",
-        "text": "FootprintSurvey :foot:",
+        "text": "Footprint Survey :foot:",
         "emoji": true
     },
     "submit": {
@@ -16,7 +16,7 @@
             "block_id": "block_3",
             "text": {
                 "type": "mrkdwn",
-                "text": "Please select your work location :office: "
+                "text": "Please select your work *location* :office: "
             },
             "accessory": {
                 "type": "static_select",
