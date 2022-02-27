@@ -1,0 +1,58 @@
+{
+	"title": {
+		"type": "plain_text",
+		"text": "Your Carbon Footprint"
+	},
+	"type": "modal",
+	"callback_id": "view_4",
+	"blocks": [
+		{
+			"type": "section",
+			"text": {
+				"type": "mrkdwn",
+				"text": "*780.452 tons CO2/Month* "
+			},
+			"accessory": {
+				"type": "image",
+				"image_url": "https://www.conserve-energy-future.com/wp-content/uploads/2013/01/CO2-carbon-footprint-banner.jpg",
+				"alt_text": "carbon_foot print"
+			}
+		},
+		{
+			"type": "section",
+			"text": {
+				"type": "plain_text",
+				"text": "Here's a note for you basis your carbon foot print value",
+				"emoji": true
+			}
+		},
+		{
+			"type": "section",
+			"text": {
+				"type": "mrkdwn",
+				"text": ":warning: *Severity* : Moderate"
+			}
+		},
+		{
+			"type": "section",
+			"text": {
+				"type": "mrkdwn",
+				"text": ":filter_data: *Category* : Travel"
+			}
+		},
+		{
+			"type": "section",
+			"text": {
+				"type": "mrkdwn",
+				"text": ":light_bulb: *Use this tip to reduce it further* "
+			}
+		},
+		{
+			"type": "section",
+			"text": {
+				"type": "mrkdwn",
+				"text": "_Walk, bike, and use public transport to explore your destination._"
+			}
+		}
+	]
+}
