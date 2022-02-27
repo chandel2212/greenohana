@@ -1,7 +1,7 @@
 {
     "title": {
         "type": "plain_text",
-        "text": "FootprintSurvey :foot:",
+        "text": "Footprint Survey :foot:",
         "emoji": true
     },
     "type": "modal",
@@ -10,9 +10,8 @@
         {
             "type": "section",
             "text": {
-                "type": "plain_text",
-                "text": "Daily Food Consumption in calories?",
-                "emoji": true
+				"type": "mrkdwn",
+				"text": "Daily Food Consumption in *calories*?"
             }
         },
         {

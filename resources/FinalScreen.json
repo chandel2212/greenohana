@@ -3,12 +3,8 @@
 		"type": "plain_text",
 		"text": "Your Carbon Footprint"
 	},
-	"submit": {
-		"type": "plain_text",
-		"text": "Done"
-	},
 	"type": "modal",
-    "callback_id" : "view_4",
+	"callback_id": "view_4",
 	"blocks": [
 		{
 			"type": "section",
