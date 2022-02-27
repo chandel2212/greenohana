@@ -37,7 +37,7 @@
             },
             "label": {
                 "type": "plain_text",
-                "text": "Grains & baked goods :cupcake:",
+                "text": "Grains & Baked Goods :cupcake:",
                 "emoji": true
             }
         } ,
@@ -63,7 +63,7 @@
             },
             "label": {
                 "type": "plain_text",
-                "text": "Fruits & vegetables :bell_pepper:",
+                "text": "Fruits & Vegetables :bell_pepper:",
                 "emoji": true
             }
         }

@@ -103,6 +103,15 @@ app.view({ callback_id: 'view_3', type: 'view_submission' }, async ({ack, body, 
 
 app.view('view_3', footprintController.submitSurvey);
 
+app.view({ callback_id: 'view_4', type: 'view_submission' }, async ({ ack, body, view, client }) => 
+{
+  console.log('Final Submission page');
+  await ack();
+});
+
+//integrate home page with footprint modal
+app.action('surveyfp_id', footprintController.invoke);
+
 
 
 //----------------------------------------
