@@ -5,6 +5,7 @@ const {MongoClient} = require('mongodb');
 const mongoose = require('mongoose');
 mongoose.Promise = require('bluebird');
 
+const eventController = require('./controllers/eventController');
 const wellbeingController = require('./controllers/wellbeingController');
 const view_home = require('./views/home.json');
 const view_app_mention = require('./views/app_mention.json');
@@ -85,7 +86,7 @@ app.view({ callback_id: 'view_1', type: 'view_submission' }, async ({ ack, body,
 app.view('view_1', wellbeingController.dataFromView);
 
 
-
+app.command("/myevents", eventController.invoke);
 
 
 //----------------------------------------
