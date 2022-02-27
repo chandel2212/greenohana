@@ -7,6 +7,9 @@ mongoose.Promise = require('bluebird');
 
 const wellbeingController = require('./controllers/wellbeingController');
 const footprintController = require('./controllers/FootprintController');
+const view_home = require('./views/home.json');
+const view_app_mention = require('./views/app_mention.json');
+
 
 require("dotenv").config();
 
@@ -23,6 +26,26 @@ const webClient = new WebClient(process.env.SLACK_BOT_TOKEN, {
     // LogLevel can be imported and used to make debugging simpler
     logLevel: LogLevel.DEBUG
   });
+//----------------------------------------
+app.event('app_home_opened', async ({ event, client, context }) => {
+    const result = await client.views.publish({
+        user_id: event.user,
+        view: view_home
+    });
+});
+
+app.event('app_mention', async ({ event, context, client, say }) => {
+    try {
+      await say(view_app_mention);
+    }
+    catch (error) {
+      console.error(error);
+    }
+  });
+
+app.action('fact', wellbeingController.welcomeFact); //say is not available, chat.postmessage posts in channel
+//   app.action('health_tip', wellbeingController.welcomeFact);
+
 //--------------------------------------
 // Sample wellBeing
 app.command("/knowledge1", wellbeingController.invoke);

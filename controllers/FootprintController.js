@@ -113,6 +113,7 @@ const submitSurvey = async ({ack, body, view, client}) => {
 
         //calculate carbon foot print value
         computeCarbonFootPrint(user, travelData,waterBill,electricityBill,distanceTravelled,worklocation,nonVegCalorie, bakedCalorie, dairyProductCalorie, fruitsCalorie);
+        console.log('update final result');
         await client.views.update({
           view_id: viewId,
           view: {
