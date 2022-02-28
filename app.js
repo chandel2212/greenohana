@@ -81,8 +81,6 @@ cron.schedule('*/30 * * * *', function() {
 //Carbon FootPrint Methods
 app.command("/knowledge", wellbeingController.invoke);
 app.command("/surveyfp", footprintController.invoke);
-app.command("/getonecfp", wellbeingController.getOneCarbonFootprint);
-app.command("/getallcfp", wellbeingController.getAllCarbonFootprint);
 
 app.view({ callback_id: 'view_1', type: 'view_submission' }, async ({ ack, body, view, client }) => 
 {

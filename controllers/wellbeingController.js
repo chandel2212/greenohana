@@ -121,7 +121,15 @@ const getAllCarbonFootprint = async ({ack, say}) =>
 const getMessage = (type) => {
     let objs = type == 'health' ? tips : facts;
     let randomIndex = Math.floor(Math.random() * objs.length);
-    return (type == 'health' ? 'Health tip' : 'Fact') + ' of the day: ' + objs[randomIndex].message;
+    //return (type == 'health' ? 'Health tip' : 'Fact') + ' of the day: ' + objs[randomIndex].message;
+    if(type == 'health')
+    {
+        return "Health tip of the day : " + objs[randomIndex1].message;
+    }
+    else
+    {
+        return "Fact of the day : " + "\n\n" + objs[randomIndex].message + "\n\n" + objs[randomIndex].description + "\n\n" + objs[randomIndex].fact_url + "\n\n" + objs[randomIndex].image_url
+    }
 };
 
 const returnMessage = async (ack, say, type) =>  {
@@ -166,7 +174,6 @@ const getFact = async ({command, ack, say, options}) => {
 const welcomeFact = async ({ ack, event, client, body, logger }) => {
     if (ack)
         await ack();
-    console.log('welcomeFact!');
     let randomIndex = Math.floor(Math.random() * facts.length);
     let user, channel;
     if (event)
@@ -182,7 +189,8 @@ const welcomeFact = async ({ ack, event, client, body, logger }) => {
     }
     client.chat.postMessage({
         channel: channel,
-        text: 'Hello ' + user +', Here is a :circle-green: fact for you: ' + facts[randomIndex].message
+        // text: 'Hello ' + user +', Here is a :circle-green: fact for you: ' + facts[randomIndex].message
+        text: "Hi Green Family, did you know ??? " + "\n\n" + facts[randomIndex].message + "\n\n" + facts[randomIndex].description + "\n\n" + facts[randomIndex].fact_url + "\n\n" + facts[randomIndex].image_url
     });
 };
 
