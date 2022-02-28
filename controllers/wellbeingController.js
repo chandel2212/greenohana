@@ -124,7 +124,7 @@ const getMessage = (type) => {
     //return (type == 'health' ? 'Health tip' : 'Fact') + ' of the day: ' + objs[randomIndex].message;
     if(type == 'health')
     {
-        return "Health tip of the day : " + objs[randomIndex1].message;
+        return "Health tip of the day : " + objs[randomIndex].message;
     }
     else
     {
